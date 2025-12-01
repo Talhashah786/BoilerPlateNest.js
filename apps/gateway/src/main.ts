@@ -9,6 +9,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Microservices API')
+    .addBearerAuth() // <--- JWT support
     .setDescription('Gateway API for Auth & Catalog microservices')
     .setVersion('1.0')
     .build();

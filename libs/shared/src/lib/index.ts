@@ -1,2 +1,2 @@
 export * from './confiq';
-export * from './shared.module';
+// export * from './shared.module';

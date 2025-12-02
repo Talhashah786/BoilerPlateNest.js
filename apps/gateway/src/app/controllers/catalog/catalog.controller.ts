@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Inject, UseGuards } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
-import { CreateProductDto } from 'libs/shared/src/dto';
+import { CreateProductDto } from '@micro-monorepo/shared';
 import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
 
 @ApiTags('Catalog')
@@ -12,15 +12,7 @@ export class CatalogGatewayController {
     @Inject('CATALOG_SERVICE') private readonly catalogClient: ClientProxy,
   ) {}
 
- 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
-  @Get('products')
-  getProducts() {
-    return lastValueFrom(this.catalogClient.send({ cmd: 'get_products' }, {}));
-  }
-
-  // 🔐 Protected: Create product (requires login)
+   // 🔐 Protected: Create product (requires login)
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()  
   @Post('products')
@@ -28,5 +20,12 @@ export class CatalogGatewayController {
     return lastValueFrom(
       this.catalogClient.send({ cmd: 'create_product' }, body)
     );
+  }
+ 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @Get('products-create')
+  getProducts() {
+    return lastValueFrom(this.catalogClient.send({ cmd: 'get_products' }, {}));
   }
 }

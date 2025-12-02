@@ -7,12 +7,12 @@ export class CreateProductDto {
   @IsString()
   name?: string;
 
-  @ApiProperty({ example: 'Highwww-end gaming laptop', type: String, required: false })
+  @ApiProperty({ example: 'High-end gaming laptop', type: String, required: false })
   @IsOptional()
   @IsString()
   description?: string;
 
-  @ApiProperty({ example: 1800, type: Number, required: false })
+  @ApiProperty({ example: 1500, type: Number, required: false })
   @IsOptional()
   @IsNumber()
   price?: number;

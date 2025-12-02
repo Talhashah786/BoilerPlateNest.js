@@ -1,5 +1,5 @@
 {
-  "name": "@micro-monorepo/source",
+  "name": "@micro-monorepo/shared",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},

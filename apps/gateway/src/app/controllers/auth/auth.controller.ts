@@ -2,7 +2,9 @@ import { Controller, Post, Body, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateUserDto, LoginDto } from 'libs/shared/src/dto';
+// import { CreateUserDto, LoginDto } from 'libs/shared/src/dto';
+import { CreateUserDto, LoginDto } from '@micro-monorepo/shared';
+
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -20,7 +22,7 @@ this.authClient.send({ cmd: 'signup' }, body)
 }
 
 // ✅ Login
-@Post('login')
+@Post('loginn')
 login(@Body() body: LoginDto) {
 return lastValueFrom(
 this.authClient.send({ cmd: 'login' }, body)

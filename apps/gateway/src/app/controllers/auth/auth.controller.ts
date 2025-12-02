@@ -22,7 +22,7 @@ this.authClient.send({ cmd: 'signup' }, body)
 }
 
 // ✅ Login
-@Post('loginn')
+@Post('login')
 login(@Body() body: LoginDto) {
 return lastValueFrom(
 this.authClient.send({ cmd: 'login' }, body)

@@ -1,6 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { ProductsService } from '../services/products.service';
+import { CreateProductDto } from '@micro-monorepo/shared';
 
 @Controller()
 export class ProductsController {
@@ -19,4 +20,20 @@ async getProducts() {
     console.log('📩 Received create_product', data);
     return this.productsService.createProduct(data);
   }
+
+  @MessagePattern({ cmd: 'get_product_by_id' })
+async getProductById(@Payload() id: string) {
+  console.log('📩 Catalog received get_product_by_id:', id);
+  return this.productsService.getProductById(id);
+}
+@MessagePattern({ cmd: 'update_product' })
+  updateProduct(data: { id: string; body: CreateProductDto }) {
+    return this.productsService.updateProduct(data.id, data.body);
+  }
+
+  @MessagePattern({ cmd: 'delete_product' })
+  deleteProduct(id: string) {
+    return this.productsService.deleteProduct(id);
+  }
+
 }

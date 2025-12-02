@@ -22,7 +22,8 @@
   "projects": {
     "auth": { "tags": [] },
     "catalog": { "tags": [] },
-    "gateway": { "tags": [] }
+    "gateway": { "tags": [] },
+     "cart": { "tags": [] }
   },
 
   "plugins": [
